@@ -1,11 +1,11 @@
 const express = require("express");
-
+const cors = require('cors');
 const userRouter = require("./users/userRouter.js");
 const postRouter = require("./posts/postRouter.js");
 
 const server = express();
 
-server.use(express.json(), logger)
+server.use(express.json(), cors(), logger)
 server.use('/api/users', userRouter)
 server.use('/api/posts', postRouter)
 
