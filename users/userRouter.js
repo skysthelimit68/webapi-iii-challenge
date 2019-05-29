@@ -35,20 +35,8 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:id', async (req, res) => {
-    try {
-        const getUser = await User.getById(req.params.id)
-        if(getUser) {
-            res.status(200).json(getUser);
-        } else {
-            res.status(404).json({message: "User not found!"})
-        }
-    }
-    catch (error) {
-        res.status(500).json({
-            message: "Error retrieving the user"
-        })
-    }
+router.get('/:id', ValidateUserId ,(req, res) => {
+    res.status(200).json(req.user)
 });
 
 router.get('/:id/posts', ValidateUserId, async (req, res) => {

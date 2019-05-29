@@ -16,10 +16,9 @@ class User extends React.Component {
     render() {
         return(
             <div>
-                <Link to={`/${this.props.user.id}`}>
                 <h1>{this.props.user.name}</h1>
-                </Link>
                 
+                <p>{this.props.user.id}</p>
             </div>
         )
     }
