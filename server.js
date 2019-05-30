@@ -10,7 +10,7 @@ server.use('/api/users', userRouter)
 server.use('/api/posts', postRouter)
 
 server.get('/', (req, res) => {
-  res.json({messageOfTheDay: process.env.MOTD})
+  res.status(200).json({messageOfTheDay: process.env.MOTD})
 });
 
 //custom middleware
