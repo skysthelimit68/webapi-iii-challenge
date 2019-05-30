@@ -9,8 +9,13 @@ server.use(express.json(), cors(), logger)
 server.use('/api/users', userRouter)
 server.use('/api/posts', postRouter)
 
-server.get('/', (req, res) => {
-  res.status(200).json({messageOfTheDay: process.env.MOTD})
+server.get('/', async (req, res) => {
+  try {
+    await res.status(200).json({messageOfTheDay: process.env.MOTD})
+  }
+  catch(error) {
+    res.status(500).json(error)
+  }
 });
 
 //custom middleware
